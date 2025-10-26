@@ -461,6 +461,67 @@ function initContactForm() {
     });
 }
 
+// Before/After Slider Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const sliders = document.querySelectorAll('.before-after-container');
+
+    sliders.forEach(container => {
+        const slider = container.querySelector('.before-after-slider');
+        const afterImage = slider.querySelector('.after-image');
+        const handle = slider.querySelector('.slider-handle');
+        let isDragging = false;
+
+        // Mouse/Touch move handler
+        function moveSlider(e) {
+            if (!isDragging && e.type !== 'mousemove') return;
+
+            const rect = container.getBoundingClientRect();
+            let x = e.clientX || e.touches[0].clientX;
+            x = x - rect.left;
+
+            // Constrain to container bounds
+            x = Math.max(0, Math.min(x, rect.width));
+
+            const percentage = (x / rect.width) * 100;
+
+            // Update clip path and handle position
+            afterImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            handle.style.left = `${percentage}%`;
+        }
+
+        // Mouse events
+        container.addEventListener('mousedown', () => {
+            isDragging = true;
+        });
+
+        container.addEventListener('mousemove', moveSlider);
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Touch events for mobile
+        container.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            moveSlider(e);
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            moveSlider(e);
+        });
+
+        container.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        // Hover effect - auto-reveal
+        container.addEventListener('mouseenter', () => {
+            container.style.cursor = 'ew-resize';
+        });
+    });
+});
+
 // Parallax Effect
 function initParallax() {
     const parallaxElements = document.querySelectorAll('.nav-card, .project-card, .avatar-container');
@@ -478,6 +539,49 @@ function initParallax() {
 // Download buttons
 document.querySelectorAll('.download-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        alert('Download feature will be implemented with actual PDF/file links.');
+        alert('This action will download PDF file to your browser. Click close to download');
     });
+});
+
+// Certificate Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const achievementCards = document.querySelectorAll('.achievement-card');
+    const modal = document.getElementById('certificateModal');
+    const modalImage = document.getElementById('certificateImage');
+    const modalClose = document.querySelector('.modal-close');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
+
+    // Open modal when card is clicked
+    achievementCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const certPath = this.getAttribute('data-cert');
+            modalImage.src = certPath;
+            modal.classList.add('active');
+
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close modal when X button is clicked
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    // Close modal when clicking backdrop
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', closeModal);
+    }
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
 });
