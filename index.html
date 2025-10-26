@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <h2 class="loading-text">Loading My Universe...</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="header-content">
+            <div class="logo">AV</div>
+            <nav class="main-nav">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#resume" class="nav-link">Resume</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="gradient-mesh"></div>
+            <canvas id="particles-canvas"></canvas>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-name glitch" data-text="YOUR NAME">Varun Andhare</h1>
+            <p class="hero-tagline">Creator | Editor | Engineer | Designer</p>
+            
+            <div class="navigation-cards">
+                <div class="nav-card" data-section="video-editing">
+                    <span class="card-icon">🎬</span>
+                    <span class="card-label">Video Editing</span>
+                </div>
+                <div class="nav-card" data-section="choreography">
+                    <span class="card-icon">📱</span>
+                    <span class="card-label">Ad reels</span>
+                </div>
+                <div class="nav-card" data-section="scripting">
+                    <span class="card-icon">✍️</span>
+                    <span class="card-label">Scripting</span>
+                </div>
+                <div class="nav-card" data-section="thumbnails">
+                    <span class="card-icon">🎨</span>
+                    <span class="card-label">Thumbnails</span>
+                </div>
+                <div class="nav-card" data-section="technical-support">
+                    <span class="card-icon">🧑‍💻</span>
+                    <span class="card-label">Technical Support</span>
+                </div>
+                <div class="nav-card" data-section="projects">
+                    <span class="card-icon">🧠</span>
+                    <span class="card-label">Projects</span>
+                </div>
+                <div class="nav-card" data-section="resume">
+                    <span class="card-icon">📜</span>
+                    <span class="card-label">Resume</span>
+                </div>
+                <div class="nav-card" data-section="instagram">
+                    <span class="card-icon">📷</span>
+                    <span class="card-label">Instagram</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
+        <div class="grid-background"></div>
+        <div class="container">
+            <div class="section-content">
+                <div class="about-text">
+                    <h2 class="section-title fade-in">About Me</h2>
+                    <div class="neon-border-box">
+                        <p class="fade-in">Multi-skilled creator with expertise in video editing, scripting, thumbnail design, and technical support engineering. Passionate about bringing creative visions to life through technology and art.</p>
+                        <p class="fade-in">My journey began with a love for storytelling through visual media, which evolved into a comprehensive skill set spanning creative arts and technical engineering. I thrive at the intersection of creativity and technology.</p>
+                    </div>
+                </div>
+                <div class="avatar-container">
+                    <div class="rotating-avatar">
+                        <div class="avatar-silhouette"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume-section">
+        <div class="container">
+            <h2 class="section-title">UNFOLD MY RESUME</h2>
+            
+            <div class="resume-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Experience</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="experience-item">
+                            <h3>Video Editor</h3>
+                            <p class="company">Various YouTube Channels & Instagram Reels</p>
+                            <p class="period">2024 - Present</p>
+                            <p class="description">Created engaging video content using VN.</p>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Technical Support Engineer</h3>
+                            <p class="company">ActioHX</p>
+                            <p class="period">September 2024 - March 2025</p>
+                            <p class="description">Provided technical support for Hardware related issues.</p>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Technical Support Executive</h3>
+                            <p class="company">KIAM</p>
+                            <p class="period">October 2025 - Present</p>
+                            <p class="description">Providing technical support regarding network related issues.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Education</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="education-item">
+                            <h3>Bachelor of Technology</h3>
+                            <p class="field">Computer Science</p>
+                            <p class="year">2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Skills</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h4>Video Editing</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">VN</span>
+                                    <span class="skill-tag">Edits</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Programming</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">HTML/CSS</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Design</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Photoshop</span>
+                                    <span class="skill-tag">Thumbnail Design</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Technical</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Networking</span>
+                                    <span class="skill-tag">Cloud Computing</span>
+                                    <span class="skill-tag">AWS</span>
+                                    <span class="skill-tag">Hardware</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Certifications</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="certifications-list">
+                            <div class="cert-item">Master Of Cloud Computing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="download-btn">Download PDF Resume</button>
+        </div>
+    </section>
+
+    <!-- Video Editing Section -->
+    <section id="video-editing" class="video-editing-section">
+        <div class="container">
+            <h2 class="section-title">Video Editing Portfolio</h2>
+            <div class="software-badges">
+                <span class="badge">VN</span>
+                <span class="badge">Edits</span>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-card" data-video="ypo-KSy28Iw?si=kroH0Ca-MSsoi-7F">
+                    <div class="video-thumbnail">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <h3>Movie review video</h3>
+                </div>
+                <div class="video-card" data-video="3YbHyc0Xdeg?si=CXZ4xximoJSWdKCD">
+                    <div class="video-thumbnail">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <h3>Food Vlog</h3>
+                </div>
+                <div class="video-card" data-video="SvGPBy_ghhA?si=5IEVSWtIYTMa7xNS">
+                    <div class="video-thumbnail">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <h3>Musical Edit</h3>
+                </div>
+                <div class="video-card" data-video="QvoG2_oabo8?si=CKy9qFxHgPZtf8YT">
+                    <div class="video-thumbnail">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <h3>Pavbhaji Vlog</h3>
+                </div>
+                <div class="video-card" data-video="4G4esFxDkJI?si=Co1Hci6YhesTbiTY">
+                    <div class="video-thumbnail">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <h3>Movie Review</h3>
+                </div>
+                <div class="video-card" data-video="T6hWlVm_0so?si=t0wlYfOjymsVtD96">
+                    <div class="video-thumbnail">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <h3>Trailer Reaction</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Choreography Section: Instagram Reels Ads Showcase -->
+<section id="choreography" class="choreography-section">
+    <div class="container">
+        <h2 class="section-title">Ad Reels Showcase</h2>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev-btn">‹</button>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Reel 1 -->
+                    <div class="choreo-card">
+                        <a href="https://www.instagram.com/reel/DPykcLtDSpa/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="choreo-video" style="position:relative; display:block;">
+                            <img src="reel1.jpg" alt="Commercial Ad 1 Reel" class="reel-thumbnail" style="width:100%;border-radius:18px;box-shadow:0 0 20px #3a86ff;" />
+                            <span style="position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,0.6);padding:6px 10px;border-radius:8px;color:#fff;font-size:0.95em;display:flex;align-items:center;">
+                                <svg height="20" width="20" style="margin-right:6px;"><!-- Instagram play icon SVG here --></svg>
+                                Watch Reel
+                            </span>
+                        </a>
+                        <p>Commercial Ad 1</p>
+                    </div>
+                    <!-- Reel 2 -->
+                    <div class="choreo-card">
+                        <a href="https://www.instagram.com/reel/DNh8P4PSrEz/" target="_blank" class="choreo-video" style="position:relative; display:block;">
+                            <img src="reel2.jpg" alt="Commercial Ad 2 Reel" class="reel-thumbnail" style="width:100%;border-radius:18px;box-shadow:0 0 20px #3a86ff;" />
+                            <span style="position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,0.6);padding:6px 10px;border-radius:8px;color:#fff;font-size:0.95em;display:flex;align-items:center;">
+                                <svg height="20" width="20" style="margin-right:6px;"><!-- Instagram play icon SVG here --></svg>
+                                Watch Reel
+                            </span>
+                        </a>
+                        <p>Commercial Ad 2</p>
+                    </div>
+                    <!-- Reel 3 -->
+                    <div class="choreo-card">
+                        <a href="https://www.instagram.com/reel/DPBFpg5DP8o/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="choreo-video" style="position:relative; display:block;">
+                            <img src="reel3.jpg" alt="Commercial Ad 3 Reel" class="reel-thumbnail" style="width:100%;border-radius:18px;box-shadow:0 0 20px #3a86ff;" />
+                            <span style="position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,0.6);padding:6px 10px;border-radius:8px;color:#fff;font-size:0.95em;display:flex;align-items:center;">
+                                <svg height="20" width="20" style="margin-right:6px;"><!-- Instagram play icon SVG here --></svg>
+                                Watch Reel
+                            </span>
+                        </a>
+                        <p>Commercial Ad 3</p>
+                    </div>
+                    <!-- Reel 4 -->
+                    <div class="choreo-card">
+                        <a href="https://www.instagram.com/reel/DOdDWXIkjAX/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="choreo-video" style="position:relative; display:block;">
+                            <img src="reel4.jpg" alt="Commercial Ad 4 Reel" class="reel-thumbnail" style="width:100%;border-radius:18px;box-shadow:0 0 20px #3a86ff;" />
+                            <span style="position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,0.6);padding:6px 10px;border-radius:8px;color:#fff;font-size:0.95em;display:flex;align-items:center;">
+                                <svg height="20" width="20" style="margin-right:6px;"><!-- Instagram play icon SVG here --></svg>
+                                Watch Reel
+                            </span>
+                        </a>
+                        <p>Commercial Ad 4</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next-btn">›</button>
+        </div>
+        <div class="carousel-dots"></div>
+    </div>
+</section>
+
+
+    <!-- Scripting Section -->
+    <section id="scripting" class="scripting-section">
+        <div class="container">
+            <h2 class="section-title">Scripting &amp; Code</h2>
+            
+            <div class="screenplay-container">
+                <div class="screenplay-text">
+                    <div class="scene-heading">INT. Office - DAY</div>
+                    <div class="action">A man writing a script for his portfolio. and you are reading it.</div>
+                    <div class="dialogue">
+                        <div class="character">NARRATOR</div>
+                        <div class="speech">You always have to prove your existence. Until they forget you.</div>
+                    </div>
+                </div>
+                
+                <div class="code-snippet">
+                    <div class="code-header">sample_script.py</div>
+                    <pre><code class="typewriter"><span class="keyword">def</span> <span class="function">career</span>():
+    <span class="string">"""Your day to day life."""</span>
+    <span class="keyword">return</span> {
+        <span class="string">'Editing'</span>: <span class="string">'Beat se'</span>,
+        <span class="string">'Engineering'</span>: <span class="string">'Majboori se'</span>,
+        <span class="string">'Work'</span>: <span class="string">'Dil se'</span>
+    }</code></pre>
+                </div>
+            </div>
+            
+            <button class="download-btn">Download Scripts</button>
+        </div>
+    </section>
+
+    <!-- Thumbnails Section -->
+    <section id="thumbnails" class="thumbnails-section">
+        <div class="container">
+            <h2 class="section-title">Thumbnail Design</h2>
+            
+            <div class="thumbnails-grid">
+                <div class="thumbnail-item">
+                    <div class="thumbnail-slider">
+                        <div class="thumbnail-before">BEFORE</div>
+                        <div class="thumbnail-after">AFTER</div>
+                    </div>
+                    <p>Movie review Thumbnail</p>
+                </div>
+                <div class="thumbnail-item">
+                    <div class="thumbnail-slider">
+                        <div class="thumbnail-before">BEFORE</div>
+                        <div class="thumbnail-after">AFTER</div>
+                    </div>
+                    <p>Food Vlog Thumbnail</p>
+                </div>
+                <div class="thumbnail-item">
+                    <div class="thumbnail-slider">
+                        <div class="thumbnail-before">BEFORE</div>
+                        <div class="thumbnail-after">AFTER</div>
+                    </div>
+                    <p>YRF Universe Thumbnail</p>
+                </div>
+                <div class="thumbnail-item">
+                    <div class="thumbnail-slider">
+                        <div class="thumbnail-before">BEFORE</div>
+                        <div class="thumbnail-after">AFTER</div>
+                    </div>
+                    <p>Trailer reaction Thumbnail</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Support Section -->
+    <section id="technical-support" class="technical-section">
+        <canvas id="circuit-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title">Technical Support Engineering</h2>
+            
+            <div class="companies-list">
+                <div class="company-item">
+                    <span class="neon-bullet">●</span>
+                    <div>
+                        <h3>KIAM</h3>
+                        <p>Networking Support</p>
+                    </div>
+                </div>
+                <div class="company-item">
+                    <span class="neon-bullet">●</span>
+                    <div>
+                        <h3>Actiohx</h3>
+                        <p>Hardware support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="project-card" id="movies-on-mood">
+                <div class="project-header">
+                    <h3>Movies on Mood</h3>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Tkinter</span>
+                        <span class="tech-badge">HTML & CSS</span>
+                    </div>
+                </div>
+                <p class="project-description">An innovative platform that recommends movies based on your current mood analysis</p>
+                
+                <div class="project-demo">
+                    <div class="demo-placeholder">
+                        <p>Live Demo Coming Soon</p>
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://github.com/varunandhare001/movies-on-mood.git" target="_blank" class="btn-link github-link">
+                        <span>View on GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Documents Section -->
+    <section id="proof-documents" class="proof-section">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            
+            <div class="proof-grid">
+                <div class="proof-card" data-proof="cert1">
+                    <div class="lock-icon">🔒</div>
+                    <h3>MCC Certification</h3>
+                    <p>Click to reveal</p>
+                </div>
+                <div class="proof-card" data-proof="cert2.jpg">
+                    <div class="lock-icon">🔒</div>
+                    <h3>Experience letter</h3>
+                    <p>Click to reveal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-fc2b57f9-4f69-4ef5-b99c-dc936d231bb4" data-elfsight-app-lazy></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-container">
+                <form class="contact-form glass-morphism">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                
+                <div class="social-links">
+                    <h3>Connect With Me</h3>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/varun-andhare-858522246/" target="_blank" class="social-icon" title="LinkedIn">
+                            <span>💼</span>
+                        </a>
+                        <a href="https://github.com/varunandhare001" target="_blank" class="social-icon" title="GitHub">
+                            <span>💻</span>
+                        </a>
+                        <a href="https://youtube.com/@foodwithmovies" target="_blank" class="social-icon" title="YouTube">
+                            <span>📺</span>
+                        </a>
+                        <a href="https://instagram.com/varunandhare001" target="_blank" class="social-icon" title="Instagram">
+                            <span>📷</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Varun Andhare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <span>🚀</span>
+    </button>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">✕</button>
+            <div class="modal-video-container">
+                <iframe id="modal-video" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate Modal -->
+    <div id="cert-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">✕</button>
+            <div class="cert-modal-content">
+                <h2 id="cert-modal-title">Certificate Details</h2>
+                <p id="cert-modal-description">Certificate information will be displayed here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
