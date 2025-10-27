@@ -2483,9 +2483,6 @@ code {
     filter: drop-shadow(0 0 25px rgba(131, 56, 236, 0.8));
 }
 
-/* ============================================
-   MOBILE RESPONSIVE FIXES
-   ============================================ */
 
 /* Base Mobile Breakpoint */
 @media (max-width: 768px) {
@@ -2858,27 +2855,9 @@ code {
         grid-template-columns: repeat(4, 1fr) !important;
     }
 }
-@media (max-width: 768px) {
-  .choreo-card {
-    min-width: 90vw !important;
-    max-width: 90vw !important;
-  }
-  .choreo-video {
-    aspect-ratio: 9 / 16;
-    height: 60vw !important;
-    max-height: 75vh;
-    width: 100% !important;
-  }
-}
 
-@media (max-width: 600px) {
-  .resume-accordion,
-  .accordion-header,
-  .accordion-content {
-    margin: 0 2vw !important;
-    padding: 2vw 3vw !important;
-    font-size: 1rem !important;
-  }
+
+
   .download-btn {
     width: 95vw !important;
     max-width: 400px;
@@ -2887,26 +2866,14 @@ code {
   }
 }
 
-@media (max-width: 768px) {
-  .navigation-cards {
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
-    padding: 15px 0 !important;
-  }
+
   .nav-card {
     min-height: 85px !important;
     font-size: 1rem !important;
     padding: 16px !important;
   }
 }
-@media (max-width: 550px) {
-  .hero-title {
-    font-size: 2.2rem !important;
-    line-height: 1.2 !important;
-    margin-top: 35px !important;
-    word-break: break-word;
-    padding: 0 8px;
-  }
+
   .hero-section {
     padding-top: 40px !important;
   }
