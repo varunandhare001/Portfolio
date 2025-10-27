@@ -2671,3 +2671,402 @@ code {
     stroke: #ffbe0b;
     filter: drop-shadow(0 0 20px rgba(255, 190, 11, 0.8));
 }
+
+/* Header Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 110, 0.6));
+    transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+    filter: drop-shadow(0 0 30px rgba(255, 0, 110, 1));
+    transform: scale(1.1);
+}
+
+/* Make it glow on scroll */
+.header-scrolled .logo-image {
+    filter: drop-shadow(0 0 25px rgba(131, 56, 236, 0.8));
+}
+
+/* ============================================
+   MOBILE RESPONSIVE FIXES
+   ============================================ */
+
+/* Base Mobile Breakpoint */
+@media (max-width: 768px) {
+
+    /* ===== 1. HERO SECTION - Fix Name Visibility ===== */
+    .hero-section {
+        min-height: 100vh;
+        padding: 80px 15px 60px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem !important; /* Smaller but visible */
+        margin-top: 30px;
+        line-height: 1.2;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .hero-tagline {
+        font-size: 0.9rem !important;
+        margin: 15px 0 30px;
+        padding: 0 15px;
+        line-height: 1.4;
+    }
+
+    /* Navigation Cards Grid - Adjust for mobile */
+    .navigation-cards {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 columns on mobile */
+        gap: 15px;
+        padding: 20px 10px;
+    }
+
+    .nav-card {
+        padding: 20px 10px;
+        min-height: 100px;
+    }
+
+    .nav-card span {
+        font-size: 2rem;
+    }
+
+    .nav-card h3 {
+        font-size: 0.85rem;
+    }
+
+    /* ===== 2. AD REELS SHOWCASE - Fix Carousel ===== */
+    .carousel-container {
+        width: 100%;
+        overflow: hidden;
+        padding: 0 10px;
+    }
+
+    .carousel-track {
+        display: flex;
+        gap: 15px;
+        transition: transform 0.3s ease;
+    }
+
+    .choreo-card {
+        min-width: 85vw !important; /* Show almost full width on mobile */
+        max-width: 85vw;
+        flex-shrink: 0;
+    }
+
+    .choreo-video {
+        aspect-ratio: 9 / 16; /* Vertical video ratio for reels */
+        width: 100%;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .choreo-video img,
+    .choreo-video iframe {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Carousel Navigation Buttons */
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-btn.prev-btn {
+        left: 5px;
+    }
+
+    .carousel-btn.next-btn {
+        right: 5px;
+    }
+
+    /* ===== 3. PROJECTS - Fix "Live Demo Coming Soon" ===== */
+    .project-card {
+        padding: 20px 15px;
+        margin: 20px 10px;
+    }
+
+    .project-demo {
+        min-height: 250px;
+        max-height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    .project-demo iframe,
+    .project-demo .demo-placeholder {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+    }
+
+    .demo-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(58, 134, 255, 0.1);
+        border: 2px solid #3a86ff;
+        padding: 40px 20px;
+    }
+
+    .demo-placeholder p {
+        font-size: 1rem;
+        color: #3a86ff;
+        text-align: center;
+    }
+
+    /* Project Title and Description */
+    .project-title {
+        font-size: 1.5rem;
+        margin: 20px 0 10px;
+    }
+
+    .project-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    /* Tech Stack Badges */
+    .tech-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .tech-badge {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        border-radius: 20px;
+        background: rgba(131, 56, 236, 0.2);
+        border: 1px solid #8338ec;
+        color: #8338ec;
+    }
+
+    /* ===== 4. CONNECT WITH ME - Fix Social Icons Layout ===== */
+    .social-icons-horizontal {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important; /* 4 columns on mobile */
+        gap: 15px !important;
+        padding: 0 15px;
+        margin-top: 30px;
+        justify-items: center;
+    }
+
+    .social-icon {
+        padding: 15px 10px !important;
+        width: 100%;
+        max-width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .social-icon svg {
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    .social-icon span {
+        font-size: 0.7rem !important;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .connect-title {
+        font-size: 1.5rem;
+        margin: 30px 0 20px;
+    }
+
+    /* ===== 5. INSTAGRAM FEED FIX ===== */
+    .instagram-feed {
+        padding: 20px 10px;
+    }
+
+    .instagram-posts {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
+    }
+
+    .instagram-post {
+        aspect-ratio: 1;
+        border-radius: 12px;
+    }
+
+    /* ===== 6. HEADER/NAVIGATION ===== */
+    .main-header {
+        padding: 15px 20px;
+    }
+
+    .logo-image {
+        height: 40px;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    /* ===== 7. SECTION TITLES ===== */
+    .section-title {
+        font-size: 2rem !important;
+        padding: 0 15px;
+        margin-bottom: 30px;
+    }
+
+    /* ===== 8. GENERAL CONTAINER ===== */
+    .container {
+        padding: 0 15px;
+        max-width: 100%;
+    }
+
+    /* ===== 9. VIDEO EDITING GRID ===== */
+    .video-grid {
+        grid-template-columns: 1fr !important; /* Single column on mobile */
+        gap: 20px;
+        padding: 20px 10px;
+    }
+
+    /* ===== 10. THUMBNAIL DESIGN ===== */
+    .thumbnail-grid {
+        grid-template-columns: 1fr !important;
+        gap: 25px;
+    }
+
+    .thumbnail-card {
+        margin: 0 10px;
+    }
+
+    /* ===== 11. ABOUT ME SECTION ===== */
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-text {
+        padding: 0 10px;
+    }
+
+    .about-avatar {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    /* ===== 12. RESUME SECTION ===== */
+    .resume-accordion {
+        margin: 0 10px 20px;
+    }
+
+    .accordion-header {
+        padding: 15px 20px;
+        font-size: 1.1rem;
+    }
+
+    .accordion-content {
+        padding: 20px 15px;
+    }
+
+    /* ===== 13. ACHIEVEMENTS ===== */
+    .achievements-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        padding: 20px 10px;
+    }
+
+    .achievement-card {
+        padding: 30px 20px;
+    }
+
+    /* ===== 14. FLOATING ACTION BUTTON ===== */
+    .floating-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+
+    /* ===== 15. MODALS ===== */
+    .modal-container {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .modal-content {
+        padding: 25px 20px;
+    }
+
+    .modal-close {
+        top: -40px;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+    }
+}
+
+/* Extra Small Devices (< 480px) */
+@media (max-width: 480px) {
+
+    .hero-title {
+        font-size: 2rem !important;
+    }
+
+    .hero-tagline {
+        font-size: 0.8rem !important;
+    }
+
+    .navigation-cards {
+        grid-template-columns: 1fr !important; /* Single column for very small screens */
+    }
+
+    .choreo-card {
+        min-width: 90vw !important;
+    }
+
+    .social-icons-horizontal {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2x2 grid for very small screens */
+        gap: 12px !important;
+    }
+
+    .social-icon {
+        max-width: 100%;
+    }
+}
+
+/* Landscape Mobile Orientation Fix */
+@media (max-height: 600px) and (orientation: landscape) {
+
+    .hero-section {
+        min-height: auto;
+        padding: 60px 15px 40px;
+    }
+
+    .hero-title {
+        font-size: 2rem !important;
+        margin-top: 20px;
+    }
+
+    .navigation-cards {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
