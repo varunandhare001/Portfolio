@@ -585,3 +585,73 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto';
     }
 });
+// Enhanced Carousel for Mobile
+document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.carousel-wrapper');
+    
+    carousels.forEach(wrapper => {
+        const track = wrapper.querySelector('.carousel-track');
+        const prevBtn = wrapper.querySelector('.prev-btn');
+        const nextBtn = wrapper.querySelector('.next-btn');
+        const cards = track.querySelectorAll('.choreo-card');
+        
+        let currentIndex = 0;
+        const isMobile = window.innerWidth <= 768;
+        
+        function updateCarousel() {
+            const cardWidth = cards[0].offsetWidth;
+            const gap = isMobile ? 15 : 30;
+            const offset = -(currentIndex * (cardWidth + gap));
+            track.style.transform = `translateX(${offset}px)`;
+        }
+        
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < cards.length - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+        
+        // Touch/Swipe Support for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left
+                if (currentIndex < cards.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Swipe right
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            }
+        }
+        
+        // Reset on resize
+        window.addEventListener('resize', () => {
+            updateCarousel();
+        });
+    });
+});
