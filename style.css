@@ -1,607 +1,2673 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varun Andhare</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loading-content">
-            <h2 class="loading-text">Loading My Universe...</h2>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
-        </div>
-    </div>
+:root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
 
-    <!-- Scroll Progress Indicator -->
-    <div id="scroll-progress"></div>
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
 
-    <!-- Custom Cursor -->
-    <div id="custom-cursor"></div>
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
 
-    <!-- Header -->
-    <header id="header">
-        <div class="header-content">
-            <div class="logo">AV</div>
-            <nav class="main-nav">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#resume" class="nav-link">Resume</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </nav>
-        </div>
-    </header>
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-background">
-            <div class="gradient-mesh"></div>
-            <canvas id="particles-canvas"></canvas>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-name glitch" data-text="YOUR NAME">Varun Andhare</h1>
-            <p class="hero-tagline">Creator | Editor | Engineer | Designer</p>
-            
-            <div class="navigation-cards">
-                <div class="nav-card" data-section="video-editing">
-                    <span class="card-icon">🎬</span>
-                    <span class="card-label">Video Editing</span>
-                </div>
-                <div class="nav-card" data-section="choreography">
-                    <span class="card-icon">📱</span>
-                    <span class="card-label">Ad reels</span>
-                </div>
-                <div class="nav-card" data-section="scripting">
-                    <span class="card-icon">✍️</span>
-                    <span class="card-label">Scripting</span>
-                </div>
-                <div class="nav-card" data-section="thumbnails">
-                    <span class="card-icon">🎨</span>
-                    <span class="card-label">Thumbnails</span>
-                </div>
-                <div class="nav-card" data-section="technical-support">
-                    <span class="card-icon">🧑‍💻</span>
-                    <span class="card-label">Technical Support</span>
-                </div>
-                <div class="nav-card" data-section="projects">
-                    <span class="card-icon">🧠</span>
-                    <span class="card-label">Projects</span>
-                </div>
-                <div class="nav-card" data-section="resume">
-                    <span class="card-icon">📜</span>
-                    <span class="card-label">Resume</span>
-                </div>
-                <div class="nav-card" data-section="instagram">
-                    <span class="card-icon">📷</span>
-                    <span class="card-label">Instagram</span>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll Down</span>
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
-    <!-- About Me Section -->
-    <section id="about" class="about-section">
-        <div class="grid-background"></div>
-        <div class="container">
-            <div class="section-content">
-                <div class="about-text">
-                    <h2 class="section-title fade-in">About Me</h2>
-                    <div class="neon-border-box">
-                        <p class="fade-in">Multi-skilled creator with expertise in video editing, scripting, thumbnail design, and technical support engineering. Passionate about bringing creative visions to life through technology and art.</p>
-                        <p class="fade-in">My journey began with a love for storytelling through visual media, which evolved into a comprehensive skill set spanning creative arts and technical engineering. I thrive at the intersection of creativity and technology.</p>
-                    </div>
-                </div>
-                <div class="avatar-container">
-                    <div class="rotating-avatar">
-                        <div class="avatar-silhouette"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume-section">
-        <div class="container">
-            <h2 class="section-title">UNFOLD MY RESUME</h2>
-            
-            <div class="resume-accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Experience</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="experience-item">
-                            <h3>Video Editor</h3>
-                            <p class="company">Various YouTube Channels & Instagram Reels</p>
-                            <p class="period">2024 - Present</p>
-                            <p class="description">Created engaging video content using VN.</p>
-                        </div>
-                        <div class="experience-item">
-                            <h3>Technical Support Engineer</h3>
-                            <p class="company">ActioHX</p>
-                            <p class="period">September 2024 - March 2025</p>
-                            <p class="description">Provided technical support for Hardware related issues.</p>
-                        </div>
-                        <div class="experience-item">
-                            <h3>Technical Support Executive</h3>
-                            <p class="company">KIAM</p>
-                            <p class="period">October 2025 - Present</p>
-                            <p class="description">Providing technical support regarding network related issues.</p>
-                        </div>
-                    </div>
-                </div>
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
 
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Education</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="education-item">
-                            <h3>Bachelor of Technology</h3>
-                            <p class="field">Computer Science</p>
-                            <p class="year">2024</p>
-                        </div>
-                    </div>
-                </div>
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
 
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Skills</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="skills-grid">
-                            <div class="skill-category">
-                                <h4>Video Editing</h4>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">VN</span>
-                                    <span class="skill-tag">Edits</span>
-                                </div>
-                            </div>
-                            <div class="skill-category">
-                                <h4>Programming</h4>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Python</span>
-                                    <span class="skill-tag">HTML/CSS</span>
-                                </div>
-                            </div>
-                            <div class="skill-category">
-                                <h4>Design</h4>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Photoshop</span>
-                                    <span class="skill-tag">Thumbnail Design</span>
-                                </div>
-                            </div>
-                            <div class="skill-category">
-                                <h4>Technical</h4>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Networking</span>
-                                    <span class="skill-tag">Cloud Computing</span>
-                                    <span class="skill-tag">AWS</span>
-                                    <span class="skill-tag">Hardware</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
 
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Certifications</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="certifications-list">
-                            <div class="cert-item">Master Of Cloud Computing</div>
-                        </div>
-                    </div>
-                </div>
-                 <!-- Download Resume Button -->
-        <a href="resume.pdf" download="Varun-Resume.pdf" class="download-btn">
-                                 Download PDF Resume
-        </a>
-            </div>
-        </div>
-    </section>
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
 
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
 
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
 
-    <!-- Video Editing Section -->
-    <section id="video-editing" class="video-editing-section">
-        <div class="container">
-            <h2 class="section-title">Video Editing Portfolio</h2>
-            <div class="software-badges">
-                <span class="badge">VN</span>
-                <span class="badge">Edits</span>
-            </div>
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* RGB versions for opacity control (Dark Mode) */
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
 
-            <div class="video-grid">
-                <div class="video-card" data-video="ypo-KSy28Iw?si=kroH0Ca-MSsoi-7F">
-                    <div class="video-thumbnail">
-                        <div class="play-icon">▶</div>
-                    </div>
-                    <h3>Movie review video</h3>
-                </div>
-                <div class="video-card" data-video="3YbHyc0Xdeg?si=CXZ4xximoJSWdKCD">
-                    <div class="video-thumbnail">
-                        <div class="play-icon">▶</div>
-                    </div>
-                    <h3>Food Vlog</h3>
-                </div>
-                <div class="video-card" data-video="SvGPBy_ghhA?si=5IEVSWtIYTMa7xNS">
-                    <div class="video-thumbnail">
-                        <div class="play-icon">▶</div>
-                    </div>
-                    <h3>Musical Edit</h3>
-                </div>
-                <div class="video-card" data-video="QvoG2_oabo8?si=CKy9qFxHgPZtf8YT">
-                    <div class="video-thumbnail">
-                        <div class="play-icon">▶</div>
-                    </div>
-                    <h3>Pavbhaji Vlog</h3>
-                </div>
-                <div class="video-card" data-video="4G4esFxDkJI?si=Co1Hci6YhesTbiTY">
-                    <div class="video-thumbnail">
-                        <div class="play-icon">▶</div>
-                    </div>
-                    <h3>Movie Review</h3>
-                </div>
-                <div class="video-card" data-video="T6hWlVm_0so?si=t0wlYfOjymsVtD96">
-                    <div class="video-thumbnail">
-                        <div class="play-icon">▶</div>
-                    </div>
-                    <h3>Trailer Reaction</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+    /* Background color tokens (Dark Mode) */
+    --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+    --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+    --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+    --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+    --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+    --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+    --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+    --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
 
-    <!-- Choreography Section: Instagram Reels Ads Showcase -->
-<section id="choreography" class="choreography-section">
-    <div class="container">
-        <h2 class="section-title">Ad Reels Showcase</h2>
-        <div class="carousel-wrapper">
-            <button class="carousel-btn prev-btn">‹</button>
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <!-- Reel 1 -->
-                    <div class="choreo-card">
-                        <a href="https://www.instagram.com/reel/DPykcLtDSpa/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="choreo-video" style="position:relative; display:block;">
-                            <img src="reel1.jpg" alt="Commercial Ad 1 Reel" class="reel-thumbnail" style="width:100%;border-radius:18px;box-shadow:0 0 20px #3a86ff;" />
-                            <span style="position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,0.6);padding:6px 10px;border-radius:8px;color:#fff;font-size:0.95em;display:flex;align-items:center;">
-                                <svg height="20" width="20" style="margin-right:6px;"><!-- Instagram play icon SVG here --></svg>
-                                Watch Reel
-                            </span>
-                        </a>
-                        <p>Commercial Ad 1</p>
-                    </div>
-                    <!-- Reel 2 -->
-                    <div class="choreo-card">
-                        <a href="https://www.instagram.com/reel/DNh8P4PSrEz/" target="_blank" class="choreo-video" style="position:relative; display:block;">
-                            <img src="reel2.jpg" alt="Commercial Ad 2 Reel" class="reel-thumbnail" style="width:100%;border-radius:18px;box-shadow:0 0 20px #3a86ff;" />
-                            <span style="position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,0.6);padding:6px 10px;border-radius:8px;color:#fff;font-size:0.95em;display:flex;align-items:center;">
-                                <svg height="20" width="20" style="margin-right:6px;"><!-- Instagram play icon SVG here --></svg>
-                                Watch Reel
-                            </span>
-                        </a>
-                        <p>Commercial Ad 2</p>
-                    </div>
-                    <!-- Reel 3 -->
-                    <div class="choreo-card">
-                        <a href="https://www.instagram.com/reel/DPBFpg5DP8o/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="choreo-video" style="position:relative; display:block;">
-                            <img src="reel3.jpg" alt="Commercial Ad 3 Reel" class="reel-thumbnail" style="width:100%;border-radius:18px;box-shadow:0 0 20px #3a86ff;" />
-                            <span style="position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,0.6);padding:6px 10px;border-radius:8px;color:#fff;font-size:0.95em;display:flex;align-items:center;">
-                                <svg height="20" width="20" style="margin-right:6px;"><!-- Instagram play icon SVG here --></svg>
-                                Watch Reel
-                            </span>
-                        </a>
-                        <p>Commercial Ad 3</p>
-                    </div>
-                    <!-- Reel 4 -->
-                    <div class="choreo-card">
-                        <a href="https://www.instagram.com/reel/DOdDWXIkjAX/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="choreo-video" style="position:relative; display:block;">
-                            <img src="reel4.jpg" alt="Commercial Ad 4 Reel" class="reel-thumbnail" style="width:100%;border-radius:18px;box-shadow:0 0 20px #3a86ff;" />
-                            <span style="position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,0.6);padding:6px 10px;border-radius:8px;color:#fff;font-size:0.95em;display:flex;align-items:center;">
-                                <svg height="20" width="20" style="margin-right:6px;"><!-- Instagram play icon SVG here --></svg>
-                                Watch Reel
-                            </span>
-                        </a>
-                        <p>Commercial Ad 4</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-btn next-btn">›</button>
-        </div>
-        <div class="carousel-dots"></div>
-    </div>
-</section>
+    /* Semantic Color Tokens (Dark Mode) */
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
 
+    /* Common style patterns - updated for dark mode */
+    --focus-ring: 0 0 0 3px var(--color-focus-ring);
+    --focus-outline: 2px solid var(--color-primary);
+    --status-bg-opacity: 0.15;
+    --status-border-opacity: 0.25;
+    --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
-    <!-- Scripting Section -->
-    <section id="scripting" class="scripting-section">
-        <div class="container">
-            <h2 class="section-title">Scripting &amp; Code</h2>
-            
-            <div class="screenplay-container">
-                <div class="screenplay-text">
-                    <div class="scene-heading">INT. Office - DAY</div>
-                    <div class="action">A man writing a script for his portfolio. and you are reading it.</div>
-                    <div class="dialogue">
-                        <div class="character">NARRATOR</div>
-                        <div class="speech">You always have to prove your existence. Until they forget you.</div>
-                    </div>
-                </div>
-                
-                <div class="code-snippet">
-                    <div class="code-header">sample_script.py</div>
-                    <pre><code class="typewriter"><span class="keyword">def</span> <span class="function">career</span>():
-    <span class="string">"""Your day to day life."""</span>
-    <span class="keyword">return</span> {
-        <span class="string">'Editing'</span>: <span class="string">'Beat se'</span>,
-        <span class="string">'Engineering'</span>: <span class="string">'Majboori se'</span>,
-        <span class="string">'Work'</span>: <span class="string">'Dil se'</span>
-    }</code></pre>
-                </div>
-            </div>
-            
-             <a href="script.pdf" download="script.pdf" class="download-btn">
-                 Download Script (currently my poems)
-             </a>
-        </div>
-    </section>
+    /* RGB versions for dark mode */
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
 
-    <!-- Thumbnail Design Section -->
-<section id="thumbnails" class="thumbnails-section">
-    <div class="container">
-        <h2 class="section-title">THUMBNAIL DESIGN</h2>
+/* Data attribute for manual theme switching */
+[data-color-scheme="dark"] {
+  /* RGB versions for opacity control (dark mode) */
+  --color-gray-400-rgb: 119, 124, 124;
+  --color-teal-300-rgb: 50, 184, 198;
+  --color-gray-300-rgb: 167, 169, 169;
+  --color-gray-200-rgb: 245, 245, 245;
 
-        <div class="thumbnail-grid">
-            <!-- Before/After Card 1 -->
-            <div class="thumbnail-card">
-                <div class="before-after-container">
-                    <div class="before-after-slider">
-                        <img src="t3.jpg" alt="Movie Review Thumbnail Before" class="before-image">
-                        <img src="3t.jpg" alt="Movie Review Thumbnail After" class="after-image">
-                        <div class="slider-handle">
-                            <div class="slider-line"></div>
-                            <div class="slider-button">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="15 18 9 12 15 6"></polyline>
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="label before-label">BEFORE</div>
-                        <div class="label after-label">AFTER</div>
-                    </div>
-                </div>
-                <p class="thumbnail-title">Movie Review Thumbnail</p>
-            </div>
+  /* Colorful background palette - Dark Mode */
+  --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+  --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+  --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+  --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+  --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+  --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+  --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+  --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
 
-            <!-- Before/After Card 2 -->
-            <div class="thumbnail-card">
-                <div class="before-after-container">
-                    <div class="before-after-slider">
-                        <img src="t1.jpg" alt="Food Vlog Thumbnail Before" class="before-image">
-                        <img src="1t.jpg" alt="Food Vlog Thumbnail After" class="after-image">
-                        <div class="slider-handle">
-                            <div class="slider-line"></div>
-                            <div class="slider-button">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="15 18 9 12 15 6"></polyline>
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="label before-label">BEFORE</div>
-                        <div class="label after-label">AFTER</div>
-                    </div>
-                </div>
-                <p class="thumbnail-title">Food Vlog Thumbnail</p>
-            </div>
+  /* Semantic Color Tokens (Dark Mode) */
+  --color-background: var(--color-charcoal-700);
+  --color-surface: var(--color-charcoal-800);
+  --color-text: var(--color-gray-200);
+  --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+  --color-primary: var(--color-teal-300);
+  --color-primary-hover: var(--color-teal-400);
+  --color-primary-active: var(--color-teal-800);
+  --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+  --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+  --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+  --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+  --color-error: var(--color-red-400);
+  --color-success: var(--color-teal-300);
+  --color-warning: var(--color-orange-400);
+  --color-info: var(--color-gray-300);
+  --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+  --color-btn-primary-text: var(--color-slate-900);
+  --color-card-border: rgba(var(--color-gray-400-rgb), 0.15);
+  --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+  --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
 
-            <!-- Before/After Card 3 -->
-            <div class="thumbnail-card">
-                <div class="before-after-container">
-                    <div class="before-after-slider">
-                        <img src="1.jpg" alt="Food Vlog Thumbnail Before" class="before-image">
-                        <img src="T2.jpg" alt="Food Vlog Thumbnail After" class="after-image">
-                        <div class="slider-handle">
-                            <div class="slider-line"></div>
-                            <div class="slider-button">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="15 18 9 12 15 6"></polyline>
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="label before-label">BEFORE</div>
-                        <div class="label after-label">AFTER</div>
-                    </div>
-                </div>
-                <p class="thumbnail-title">YRF Universe Thumbnail</p>
-            </div>
+  /* Common style patterns - updated for dark mode */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
-            <!-- Before/After Card 4 -->
-            <div class="thumbnail-card">
-                <div class="before-after-container">
-                    <div class="before-after-slider">
-                        <img src="t4.jpg" alt="Food Vlog Thumbnail Before" class="before-image">
-                        <img src="4t.jpg" alt="Food Vlog Thumbnail After" class="after-image">
-                        <div class="slider-handle">
-                            <div class="slider-line"></div>
-                            <div class="slider-button">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="15 18 9 12 15 6"></polyline>
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="label before-label">BEFORE</div>
-                        <div class="label after-label">AFTER</div>
-                    </div>
-                </div>
-                <p class="thumbnail-title">Trailer reaction Thumbnail</p>
-            </div>
-        </div>
-    </div>
-</section>
+  /* RGB versions for dark mode */
+  --color-success-rgb: var(--color-teal-300-rgb);
+  --color-error-rgb: var(--color-red-400-rgb);
+  --color-warning-rgb: var(--color-orange-400-rgb);
+  --color-info-rgb: var(--color-gray-300-rgb);
+}
 
-    <!-- Technical Support Section -->
-    <section id="technical-support" class="technical-section">
-        <canvas id="circuit-canvas"></canvas>
-        <div class="container">
-            <h2 class="section-title">Technical Support Engineering</h2>
-            
-            <div class="companies-list">
-                <div class="company-item">
-                    <span class="neon-bullet">●</span>
-                    <div>
-                        <h3>KIAM</h3>
-                        <p>Networking Support</p>
-                    </div>
-                </div>
-                <div class="company-item">
-                    <span class="neon-bullet">●</span>
-                    <div>
-                        <h3>Actiohx</h3>
-                        <p>Hardware support</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+[data-color-scheme="light"] {
+  /* RGB versions for opacity control (light mode) */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            
-            <div class="project-card" id="movies-on-mood">
-                <div class="project-header">
-                    <h3>Movies on Mood</h3>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">Tkinter</span>
-                        <span class="tech-badge">HTML & CSS</span>
-                    </div>
-                </div>
-                <p class="project-description">An innovative platform that recommends movies based on your current mood analysis</p>
-                
-                <div class="project-demo">
-                    <div class="demo-placeholder">
-                        <p>Live Demo Coming Soon</p>
-                    </div>
-                </div>
-                
-                <div class="project-links">
-                    <a href="https://github.com/varunandhare001/movies-on-mood.git" target="_blank" class="btn-link github-link">
-                        <span>View on GitHub</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
 
-<!-- Certificate Modal -->
-<div id="certificateModal" class="certificate-modal">
-    <div class="modal-backdrop"></div>
-    <div class="modal-container">
-        <button class="modal-close">&times;</button>
-        <img id="certificateImage" src="" alt="Certificate">
-    </div>
-</div>
+  /* RGB versions for light mode */
+  --color-success-rgb: var(--color-teal-500-rgb);
+  --color-error-rgb: var(--color-red-500-rgb);
+  --color-warning-rgb: var(--color-orange-500-rgb);
+  --color-info-rgb: var(--color-slate-500-rgb);
+}
 
-<!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-fc2b57f9-4f69-4ef5-b99c-dc936d231bb4" data-elfsight-app-lazy></div>
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
 
-    <!-- Contact Section -->
-<section id="contact" class="contact-section">
-    <div class="container">
-        <div class="contact-container">
-            <h3 class="connect-title">Connect With Me</h3>
+body {
+  margin: 0;
+  padding: 0;
+}
 
-            <div class="social-icons-horizontal">
-                <a href="https://www.linkedin.com/in/varun-andhare-858522246/" target="_blank" class="social-icon" title="LinkedIn">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                    <span>LinkedIn</span>
-                </a>
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
-                <a href="https://github.com/varunandhare001" target="_blank" class="social-icon" title="GitHub">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    <span>GitHub</span>
-                </a>
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-tight);
+}
 
-                <a href="https://youtube.com/@foodwithmovies" target="_blank" class="social-icon" title="YouTube">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                    </svg>
-                    <span>YouTube</span>
-                </a>
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+h6 {
+  font-size: var(--font-size-md);
+}
 
-                <a href="https://instagram.com/varunandhare001" target="_blank" class="social-icon" title="Instagram">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                    <span>Instagram</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+p {
+  margin: 0 0 var(--space-16) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--font-size-base) * 0.95);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: var(--space-1) var(--space-4);
+}
+
+pre {
+  padding: var(--space-16);
+  margin: var(--space-16) 0;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  border: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.btn--secondary:active {
+  background: var(--color-secondary-active);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  background: var(--color-secondary);
+}
+
+.btn--sm {
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.btn--lg {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form elements */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+textarea.form-control {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+select.form-control {
+  padding: var(--space-8) var(--space-12);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
 
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Varun Andhare. All rights reserved.</p>
-        </div>
-    </footer>
+.about-avatar {
+    position: relative;
+    width: 350px;
+    height: 350px;
+}
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top">
-        <span>🚀</span>
-    </button>
+.avatar-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(255, 0, 110, 0.6),
+                0 0 100px rgba(131, 56, 236, 0.4);
+    animation: float 6s ease-in-out infinite;
+}
 
-    <!-- Video Modal -->
-    <div id="video-modal" class="modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close">✕</button>
-            <div class="modal-video-container">
-                <iframe id="modal-video" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
+/* Split two photos vertically */
+.avatar-photo {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    <!-- Certificate Modal -->
-    <div id="cert-modal" class="modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close">✕</button>
-            <div class="cert-modal-content">
-                <h2 id="cert-modal-title">Certificate Details</h2>
-                <p id="cert-modal-description">Certificate information will be displayed here.</p>
-            </div>
-        </div>
-    </div>
+.photo-left {
+    left: 0;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
 
-    <script src="app.js"></script>
-</body>
-</html>
+.photo-right {
+    right: 0;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+}
+
+/* Thumbnail Section */
+.thumbnails-section {
+    padding: 80px 20px;
+    background: #000;
+}
+
+.thumbnail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.thumbnail-card {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid #8338ec;
+    box-shadow: 0 0 30px rgba(131, 56, 236, 0.3);
+    transition: all 0.3s ease;
+}
+
+.thumbnail-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 50px rgba(131, 56, 236, 0.6);
+}
+
+/* Before/After Slider */
+.before-after-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: ew-resize;
+}
+
+.before-after-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.before-image,
+.after-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.after-image {
+    clip-path: inset(0 50% 0 0);
+}
+
+/* Slider Handle */
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: #ff006e;
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
+    transform: translateX(-50%);
+    z-index: 10;
+    cursor: ew-resize;
+}
+
+.slider-line {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+        rgba(255, 0, 110, 0.8) 0%,
+        rgba(255, 0, 110, 1) 50%,
+        rgba(255, 0, 110, 0.8) 100%);
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: #ff006e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(255, 0, 110, 1),
+                0 0 50px rgba(255, 0, 110, 0.6);
+    cursor: ew-resize;
+}
+
+.slider-button svg {
+    color: #fff;
+}
+
+/* Before/After Labels */
+.label {
+    position: absolute;
+    top: 20px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9em;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    z-index: 5;
+}
+
+.before-label {
+    left: 20px;
+    border: 2px solid #8338ec;
+    color: #8338ec;
+}
+
+.after-label {
+    right: 20px;
+    border: 2px solid #ff006e;
+    color: #ff006e;
+}
+
+.thumbnail-title {
+    margin-top: 15px;
+    text-align: center;
+    color: #ff006e;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .thumbnail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-20px) rotate(-5deg);
+    }
+}
+
+/* Add a dark mode specific caret */
+@media (prefers-color-scheme: dark) {
+  select.form-control {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+/* Also handle data-color-scheme */
+[data-color-scheme="dark"] select.form-control {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] select.form-control {
+  background-image: var(--select-caret-light);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  outline: var(--focus-outline);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-16);
+}
+
+/* Card component */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__body {
+  padding: var(--space-16);
+}
+
+.card__header,
+.card__footer {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-card-border-inner);
+}
+
+/* Status indicators - simplified with CSS variables */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.status--success {
+  background-color: rgba(
+    var(--color-success-rgb, 33, 128, 141),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-success);
+  border: 1px solid
+    rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+}
+
+.status--error {
+  background-color: rgba(
+    var(--color-error-rgb, 192, 21, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-error);
+  border: 1px solid
+    rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+}
+
+.status--warning {
+  background-color: rgba(
+    var(--color-warning-rgb, 168, 75, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-warning);
+  border: 1px solid
+    rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+}
+
+.status--info {
+  background-color: rgba(
+    var(--color-info-rgb, 98, 108, 113),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-info);
+  border: 1px solid
+    rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+}
+
+/* Container layout */
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: var(--container-md);
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+.gap-8 {
+  gap: var(--space-8);
+}
+.gap-16 {
+  gap: var(--space-16);
+}
+
+.m-0 {
+  margin: 0;
+}
+.mt-8 {
+  margin-top: var(--space-8);
+}
+.mb-8 {
+  margin-bottom: var(--space-8);
+}
+.mx-8 {
+  margin-left: var(--space-8);
+  margin-right: var(--space-8);
+}
+.my-8 {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.p-0 {
+  padding: 0;
+}
+.py-8 {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+.px-8 {
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+}
+.py-16 {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+.px-16 {
+  padding-left: var(--space-16);
+  padding-right: var(--space-16);
+}
+
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Dark mode specifics */
+[data-color-scheme="dark"] .btn--outline {
+  border: 1px solid var(--color-border-secondary);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+/* END PERPLEXITY DESIGN SYSTEM */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --neon-pink: #ff006e;
+    --neon-purple: #8338ec;
+    --neon-blue: #3a86ff;
+    --neon-green: #06ffa5;
+    --neon-yellow: #ffbe0b;
+    --neon-orange: #fb5607;
+    --black: #000000;
+    --dark-grey: #1a1a1a;
+    --medium-grey: #2d2d2d;
+    --light-grey: #404040;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--black);
+    color: #ffffff;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-text {
+    font-size: 2rem;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite;
+}
+
+.loading-bar {
+    width: 300px;
+    height: 4px;
+    background: var(--dark-grey);
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+    animation: loading 2s ease-in-out forwards;
+}
+
+@keyframes loading {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+/* Scroll Progress */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+    z-index: 9999;
+    transform-origin: left;
+}
+
+/* Custom Cursor */
+#custom-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--neon-blue) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.1s ease;
+    box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
+}
+
+/* Header */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.main-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.gradient-mesh {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, var(--neon-purple) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--neon-pink) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, var(--neon-blue) 0%, transparent 50%);
+    opacity: 0.3;
+    animation: meshMove 10s ease-in-out infinite;
+}
+
+@keyframes meshMove {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, 20px) scale(1.1); }
+}
+
+#particles-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero-name {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInDown 1s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    color: var(--neon-pink);
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+    color: var(--neon-blue);
+    z-index: -2;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.hero-tagline {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.navigation-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.nav-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--neon-blue);
+    border-radius: 15px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease backwards;
+}
+
+.nav-card:nth-child(1) { animation-delay: 0.1s; }
+.nav-card:nth-child(2) { animation-delay: 0.2s; }
+.nav-card:nth-child(3) { animation-delay: 0.3s; }
+.nav-card:nth-child(4) { animation-delay: 0.4s; }
+.nav-card:nth-child(5) { animation-delay: 0.5s; }
+.nav-card:nth-child(6) { animation-delay: 0.6s; }
+.nav-card:nth-child(7) { animation-delay: 0.7s; }
+.nav-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 30px var(--neon-blue), 0 0 60px var(--neon-blue);
+    border-color: var(--neon-pink);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+}
+
+.card-label {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--neon-blue);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: var(--neon-blue);
+    position: relative;
+}
+
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid var(--neon-blue);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* About Section */
+.about-section {
+    position: relative;
+    padding: 100px 0;
+    background: var(--dark-grey);
+}
+
+.grid-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(58, 134, 255, 0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(58, 134, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+}
+
+.section-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text {
+    position: relative;
+    z-index: 1;
+}
+
+.neon-border-box {
+    border: 2px solid var(--neon-purple);
+    border-radius: 15px;
+    padding: 30px;
+    background: rgba(131, 56, 236, 0.05);
+    box-shadow: 0 0 20px rgba(131, 56, 236, 0.3);
+}
+
+.neon-border-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rotating-avatar {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    animation: rotate3d 10s linear infinite;
+}
+
+@keyframes rotate3d {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+.avatar-silhouette {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
+    border-radius: 50%;
+    box-shadow: 0 0 40px var(--neon-blue), 0 0 80px var(--neon-pink);
+}
+
+/* Resume Section */
+.resume-section {
+    padding: 100px 0;
+    background: var(--black);
+}
+
+.resume-accordion {
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.accordion-item {
+    margin-bottom: 20px;
+    border: 2px solid var(--neon-blue);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--dark-grey);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 20px 30px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: rgba(58, 134, 255, 0.1);
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 1000px;
+    padding: 30px;
+}
+
+.experience-item,
+.education-item {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.experience-item:last-child,
+.education-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.experience-item h3,
+.education-item h3 {
+    font-size: 1.3rem;
+    color: var(--neon-blue);
+    margin-bottom: 10px;
+}
+
+.company,
+.field {
+    font-size: 1.1rem;
+    color: var(--neon-pink);
+    margin-bottom: 5px;
+}
+
+.period,
+.year {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.description {
+    line-height: 1.6;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.skill-category h4 {
+    color: var(--neon-purple);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    padding: 8px 15px;
+    background: rgba(58, 134, 255, 0.2);
+    border: 1px solid var(--neon-blue);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--neon-blue);
+}
+
+.certifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cert-item {
+    padding: 15px 20px;
+    background: rgba(131, 56, 236, 0.1);
+    border-left: 3px solid var(--neon-purple);
+    border-radius: 5px;
+}
+
+.download-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px var(--neon-pink);
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
+    text-align: center;
+}
+
+.download-btn:hover {
+    background: var(--neon-pink);
+    color: var(--black);
+    text-shadow: none;
+    box-shadow: 0 0 30px var(--neon-pink), 0 0 60px var(--neon-pink);
+}
+
+/* Video Editing Section */
+.video-editing-section {
+    padding: 100px 0;
+    background: var(--dark-grey);
+}
+
+.software-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.badge {
+    padding: 10px 25px;
+    background: rgba(255, 0, 110, 0.2);
+    border: 1px solid var(--neon-pink);
+    border-radius: 20px;
+    color: var(--neon-pink);
+    font-weight: bold;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.video-card {
+    background: var(--medium-grey);
+    border: 2px solid var(--neon-blue);
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--neon-blue);
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.play-icon {
+    font-size: 3rem;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.video-card h3 {
+    padding: 20px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Choreography Section */
+.choreography-section {
+    padding: 100px 0;
+    background: var(--black);
+}
+
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.carousel-container {
+    overflow: hidden;
+    flex: 1;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.5s ease;
+}
+
+.choreo-card {
+    min-width: 300px;
+    background: var(--medium-grey);
+    border: 2px solid var(--neon-purple);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.choreo-video {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+..video-thumbnail {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.1);
+}
+
+/* Play Overlay */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-card:hover .play-overlay {
+    opacity: 1;
+}
+
+.play-icon {
+    filter: drop-shadow(0 0 20px rgba(255, 0, 110, 0.8));
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover .play-icon {
+    transform: scale(1.2);
+}
+
+
+.choreo-card p {
+    padding: 20px;
+    text-align: center;
+}
+
+.carousel-btn {
+    background: rgba(58, 134, 255, 0.3);
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: var(--neon-blue);
+    color: var(--black);
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--light-grey);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--neon-purple);
+    box-shadow: 0 0 10px var(--neon-purple);
+}
+
+/* Scripting Section */
+.scripting-section {
+    padding: 100px 0;
+    background: var(--dark-grey);
+}
+
+.screenplay-container {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.screenplay-text {
+    background: var(--medium-grey);
+    border: 2px solid var(--neon-yellow);
+    border-radius: 15px;
+    padding: 30px;
+    font-family: 'Courier New', monospace;
+}
+
+.scene-heading {
+    color: var(--neon-yellow);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.action {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.dialogue {
+    margin-left: 30px;
+}
+
+.character {
+    color: var(--neon-purple);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.speech {
+    line-height: 1.8;
+}
+
+.code-snippet {
+    background: var(--black);
+    border: 2px solid var(--neon-green);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.code-header {
+    background: var(--neon-green);
+    color: var(--black);
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+pre {
+    padding: 30px;
+    margin: 0;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    color: #ffffff;
+    line-height: 1.8;
+}
+
+.keyword {
+    color: var(--neon-pink);
+}
+
+.function {
+    color: var(--neon-yellow);
+}
+
+.string {
+    color: var(--neon-green);
+}
+
+/* Thumbnails Section */
+.thumbnails-section {
+    padding: 100px 0;
+    background: var(--black);
+}
+
+.thumbnails-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.thumbnail-item {
+    text-align: center;
+}
+
+.thumbnail-slider {
+    width: 100%;
+    height: 300px;
+    border: 2px solid var(--neon-orange);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.thumbnail-before,
+.thumbnail-after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: transform 0.5s ease;
+}
+
+.thumbnail-before {
+    background: linear-gradient(135deg, var(--neon-purple), var(--dark-grey));
+    transform: translateX(0);
+}
+
+.thumbnail-after {
+    background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
+    transform: translateX(100%);
+}
+
+.thumbnail-slider:hover .thumbnail-before {
+    transform: translateX(-100%);
+}
+
+.thumbnail-slider:hover .thumbnail-after {
+    transform: translateX(0);
+}
+
+.thumbnail-item p {
+    margin-top: 15px;
+    color: var(--neon-orange);
+}
+
+/* Technical Section */
+.technical-section {
+    padding: 100px 0;
+    background: var(--dark-grey);
+    position: relative;
+}
+
+#circuit-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+}
+
+.companies-list {
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.company-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 3px solid var(--neon-blue);
+}
+
+.neon-bullet {
+    color: var(--neon-blue);
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.company-item h3 {
+    color: var(--neon-blue);
+    margin-bottom: 10px;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.certificate-card {
+    height: 250px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.cert-front,
+.cert-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: var(--medium-grey);
+    border: 2px solid var(--neon-green);
+    border-radius: 15px;
+    transition: transform 0.6s ease;
+}
+
+.cert-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.cert-front h3 {
+    color: var(--neon-green);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.cert-back {
+    transform: rotateY(180deg);
+    background: var(--neon-green);
+    color: var(--black);
+}
+
+.certificate-card:hover .cert-front {
+    transform: rotateY(180deg);
+}
+
+.certificate-card:hover .cert-back {
+    transform: rotateY(360deg);
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 100px 0;
+    background: var(--black);
+}
+
+.project-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--dark-grey);
+    border: 2px solid var(--neon-purple);
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 0 40px rgba(131, 56, 236, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 60px rgba(131, 56, 236, 0.5);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.project-header h3 {
+    font-size: 2rem;
+    color: var(--neon-purple);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-badge {
+    padding: 8px 15px;
+    background: rgba(131, 56, 236, 0.2);
+    border: 1px solid var(--neon-purple);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--neon-purple);
+}
+
+.project-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.project-demo {
+    width: 100%;
+    height: 400px;
+    background: var(--medium-grey);
+    border: 2px solid var(--neon-blue);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demo-placeholder {
+    font-size: 1.5rem;
+    color: var(--neon-blue);
+}
+
+.project-links {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-link {
+    padding: 15px 30px;
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-link:hover {
+    background: var(--neon-blue);
+    color: var(--black);
+    box-shadow: 0 0 30px var(--neon-blue);
+}
+
+/* Proof Documents Section */
+.proof-section {
+    padding: 100px 0;
+    background: var(--dark-grey);
+}
+
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.proof-card {
+    background: var(--medium-grey);
+    border: 2px solid var(--neon-yellow);
+    border-radius: 15px;
+    padding: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.proof-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 190, 11, 0.5);
+}
+
+.lock-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.proof-card h3 {
+    color: var(--neon-yellow);
+    margin-bottom: 10px;
+}
+
+/* Instagram Section */
+.instagram-section {
+    padding: 100px 0;
+    background: var(--black);
+}
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.insta-card {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.insta-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.insta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.insta-card:hover .insta-overlay {
+    opacity: 1;
+}
+
+.insta-overlay span {
+    font-size: 1.2rem;
+}
+
+.follow-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 15px 40px;
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+    border: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.follow-btn:hover {
+    box-shadow: 0 0 30px var(--neon-pink), 0 0 60px var(--neon-purple);
+    transform: scale(1.05);
+}
+
+//* Contact Section */
+.contact-section {
+    padding: 100px 20px;
+    background: #000;
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.connect-title {
+    color: #ff006e;
+    font-size: 2em;
+    margin: 40px 0 50px 0;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(255, 0, 110, 0.6);
+}
+
+/* Horizontal Social Icons */
+.social-icons-horizontal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.social-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+}
+
+.social-icon svg {
+    transition: all 0.3s ease;
+}
+
+.social-icon span {
+    font-size: 1em;
+    font-weight: 600;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+/* LinkedIn Hover */
+.social-icon:nth-child(1):hover {
+    border-color: #0077b5;
+    box-shadow: 0 0 40px rgba(0, 119, 181, 0.6);
+    transform: translateY(-10px);
+}
+
+.social-icon:nth-child(1):hover svg {
+    color: #0077b5;
+    filter: drop-shadow(0 0 20px rgba(0, 119, 181, 0.8));
+}
+
+/* GitHub Hover */
+.social-icon:nth-child(2):hover {
+    border-color: #8338ec;
+    box-shadow: 0 0 40px rgba(131, 56, 236, 0.6);
+    transform: translateY(-10px);
+}
+
+.social-icon:nth-child(2):hover svg {
+    color: #8338ec;
+    filter: drop-shadow(0 0 20px rgba(131, 56, 236, 0.8));
+}
+
+/* YouTube Hover */
+.social-icon:nth-child(3):hover {
+    border-color: #ff0000;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+    transform: translateY(-10px);
+}
+
+.social-icon:nth-child(3):hover svg {
+    color: #ff0000;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
+}
+
+/* Instagram Hover */
+.social-icon:nth-child(4):hover {
+    border-color: #ff006e;
+    box-shadow: 0 0 40px rgba(255, 0, 110, 0.6);
+    transform: translateY(-10px);
+}
+
+.social-icon:nth-child(4):hover svg {
+    color: #ff006e;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 110, 0.8));
+}
+
+.social-icon:hover span {
+    opacity: 1;
+    color: inherit;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .social-icons-horizontal {
+        gap: 25px;
+    }
+
+    .social-icon {
+        padding: 15px;
+    }
+
+    .social-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .connect-title {
+        font-size: 1.5em;
+    }
+}
+
+/* Footer */
+.footer {
+    padding: 40px 0;
+    background: var(--black);
+    border-top: 1px solid var(--light-grey);
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-social a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--neon-pink);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--neon-purple);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 0 20px var(--neon-purple);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px var(--neon-purple);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 900px;
+    background: var(--dark-grey);
+    border: 2px solid var(--neon-blue);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 60px rgba(58, 134, 255, 0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.modal-video-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.cert-modal-content {
+    padding: 30px;
+}
+
+.cert-modal-content h2 {
+    color: var(--neon-green);
+    margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navigation-cards {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+    
+    .nav-card {
+        padding: 20px 10px;
+    }
+    
+    .card-icon {
+        font-size: 2rem;
+    }
+    
+    .card-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+    
+    #custom-cursor {
+        display: none;
+    }
+    
+    .hero-name {
+        font-size: 3rem;
+    }
+    
+    .hero-tagline {
+        font-size: 1.2rem;
+    }
+    
+    .navigation-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .section-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .screenplay-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .thumbnails-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .proof-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .footer .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #header {
+        padding: 15px 20px;
+    }
+    
+    .hero-name {
+        font-size: 2rem;
+    }
+    
+    .navigation-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .instagram-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* Certificate Modal */
+.certificate-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.certificate-modal.active {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    align-items: center;
+}
+
+.modal-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    z-index: 10001;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-container img {
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 15px;
+    border: 3px solid #ffbe0b;
+    box-shadow: 0 0 60px rgba(255, 190, 11, 0.6);
+}
+
+.modal-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: #ff006e;
+    border: none;
+    color: #fff;
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.6);
+}
+
+.modal-close:hover {
+    background: #ff3388;
+    transform: rotate(90deg);
+    box-shadow: 0 0 50px rgba(255, 0, 110, 1);
+}
+
+/* Achievement Card Hover Effect */
+.achievement-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 50px rgba(255, 190, 11, 0.8);
+}
+
+.achievement-card:hover .lock-icon svg {
+    stroke: #ffbe0b;
+    filter: drop-shadow(0 0 20px rgba(255, 190, 11, 0.8));
+}
